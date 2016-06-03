@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Checks
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+	colorflag="--color"
+else # OS X `ls`
+	colorflag="-G"
+fi
+
+# Navigation
+alias ..='cd ..'
+alias cd..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# mv, rm, cp
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
+
+alias cask='brew cask'
+
+alias hosts='sudo $EDITOR /etc/hosts'
+
+export CLICOLOR_FORCE=1
+
+alias ls='gls -AFh ${colorflag} --group-directories-first'
+alias lsd='ls -l | grep "^d"'
+alias lh='ls -lh'
+
+# Paths
+alias dl='cd ~/Downloads'
+alias p='cd ~/Projects'
+alias db='cd ~/Documents/Dropbox'
+
+
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
