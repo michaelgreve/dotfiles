@@ -17,6 +17,7 @@ brew upgrade --all
 
 apps=(
 	bash-completion2
+	composer
 	gnu-sed --with-default-names
 	grep --with-default-names
 	git
