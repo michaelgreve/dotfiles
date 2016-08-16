@@ -16,21 +16,13 @@ brew update
 brew upgrade --all
 
 apps=(
-
+	bash-completion2
+	gnu-sed --with-default-names
+	grep --with-default-names
+	git
+	dockutil
+	wget --with-iri
+	wifi-password
 )
-
-
-
-### Install Casks
-
-apps=(
-	bettertouchtools
-	dash
-	dropbox
-	flux
-	google-chrome
-	google-chrome-canary
-	google-drive
-	sublime-text
-	vlc
-)
+brew install "${apps[@]}"
+unset apps
