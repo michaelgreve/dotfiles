@@ -22,10 +22,10 @@ apps=(
 	bash
 	bash-completion2
 	moreutils
-	findutils
 	composer
 	gnu-sed --with-default-names
 	grep --with-default-names
+	findutils --with-default-names
 	git
 	dockutil
 	wget --with-iri
