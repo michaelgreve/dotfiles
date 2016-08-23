@@ -3,7 +3,7 @@
 ### Install Casks
 
 apps=(
-	bettertouchtools
+	bettertouchtool
 	dash
 	dropbox
 	flux

@@ -14,6 +14,7 @@ brew update
 
 # Tap casks
 brew tap homebrew/versions
+brew tap homebrew/dupes
 
 # Upgrade any already-installed formulae.
 brew upgrade --all
@@ -21,20 +22,21 @@ brew upgrade --all
 apps=(
 	bash
 	bash-completion2
+	curl --with-openssl --with-libssh2
 	moreutils
 	composer
+	htop
 	gnu-sed --with-default-names
 	grep --with-default-names
 	findutils --with-default-names
-	git
+	git --with-brewed-curl --with-brewed-openssl
 	dockutil
 	wget --with-iri
 	wifi-password
 	vim --with-override-system-vi
-	homebrew/dupes/grep
 	homebrew/dupes/openssh
 	homebrew/dupes/screen
-	homebrew/php/php56 --with-gmp
+	homebrew/php/php56 --with-mssql --with-homebrew-curl --with-homebrew-libxml2 --with-pear
 )
 brew install "${apps[@]}"
 unset apps

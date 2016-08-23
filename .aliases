@@ -2,7 +2,7 @@
 
 # Checks
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
+	colorflag="--color=auto"
 else # OS X `ls`
 	colorflag="-G"
 fi
@@ -30,7 +30,7 @@ alias lh='ls -lh'
 
 # Paths
 alias dl='cd ~/Downloads'
-alias p='cd ~/Projects'
+alias p='cd ~/Documents/Projects'
 alias db='cd ~/Documents/Dropbox'
 
 
