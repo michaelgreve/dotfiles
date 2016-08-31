@@ -18,5 +18,5 @@ for key in ${sshkeys[@]}; do
 done
 
 echo
-echo "Remember to add your keys where required (github, bitbucket, etc.)"
+echo "Remember to add the keys to github, bitbucket, etc."
 echo "and update your ${SSH_DIR}/config file.";
