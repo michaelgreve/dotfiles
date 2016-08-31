@@ -22,6 +22,7 @@ brew upgrade --all
 apps=(
 	bash
 	bash-completion2
+	git --with-brewed-curl --with-brewed-openssl
 	curl --with-openssl --with-libssh2
 	moreutils
 	composer
@@ -29,11 +30,11 @@ apps=(
 	gnu-sed --with-default-names
 	grep --with-default-names
 	findutils --with-default-names
-	git --with-brewed-curl --with-brewed-openssl
 	dockutil
 	wget --with-iri
 	wifi-password
 	vim --with-override-system-vi
+	lastpass-cli
 	homebrew/dupes/openssh
 	homebrew/dupes/screen
 	homebrew/php/php56 --with-mssql --with-homebrew-curl --with-homebrew-libxml2 --with-pear

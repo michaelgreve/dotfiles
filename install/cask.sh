@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+# Tapping
+brew tap Caskroom/versions
+
 ### Install Casks
 
 apps=(
+	iterm
 	bettertouchtool
 	dash
 	dropbox
