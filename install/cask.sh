@@ -11,6 +11,7 @@ apps=(
 	dash
 	dropbox
 	flux
+	pycharm-ce
 	google-chrome
 	google-chrome-canary
 	google-drive
