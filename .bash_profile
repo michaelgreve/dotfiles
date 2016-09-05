@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export PATH="$HOME/bin:$PATH";
-
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
@@ -45,6 +43,8 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
-'# Load nvm at login
+# Load nvm at login
 export NVM_DIR="$HOME/.nvm"
-source "$(brew --prefix nvm)/nvm.sh"'
+source "$(brew --prefix nvm)/nvm.sh"
+
+# Add ssh-keys to ssh-agent

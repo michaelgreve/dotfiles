@@ -1,25 +1,36 @@
 #!/usr/bin/env bash
 
+
+run_brew() {
+	
+}
 ### Install Brews
 
 # Install command-line tools using Homebrew.
 
 # Check if Homebrew is already installed
-if ! which brew > /dev/null; then
+if ! type_exists 'brew'; then
+	e_header "Homebrew is not installed, getting latest version."
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	[[ $? ]] && e_success "Homebrew installed"
+else
+	e_header "Updating Homebrew ..."
+	brew update
+	[[ $? ]] && e_success "Done"
 fi;
-
-# Make sure we’re using the latest Homebrew.
-brew update
 
 # Tap casks
 brew tap homebrew/versions
 brew tap homebrew/dupes
 
 # Upgrade any already-installed formulae.
-brew upgrade --all
+e_header "Updating any existing Homebrew formulae ..."
+brew upgrade
+[[ $? ]] && e_success "Done"
 
 apps=(
+	coreutils
+	python3
 	bash
 	bash-completion2
 	git --with-brewed-curl --with-brewed-openssl
@@ -37,13 +48,11 @@ apps=(
 	lastpass-cli
 	homebrew/dupes/openssh
 	homebrew/dupes/screen
-	homebrew/php/php56 --with-mssql --with-homebrew-curl --with-homebrew-libxml2 --with-pear
+#	homebrew/php/php56 --with-mssql --with-homebrew-curl --with-homebrew-libxml2 --with-pear
 )
-brew install "${apps[@]}"
+#brew install "${apps[@]}"
 unset apps
 
-# Add coreutils to path
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Switch to using brew-installed bash as default shell

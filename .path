@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+export PATH="$HOME/bin:$PATH";
+
+# Add coreutils to path
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+# Add coreutils manpages to manpath
+export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
