@@ -105,9 +105,9 @@ if [[ $no_packages ]]; then
 else
     printf "Updating packages...\n"
     # Install Homebrew formulae
-    run_brew
+#    run_brew
     # Install Node packages
-    run_npm
+#    run_npm
 fi
 
 link() {
@@ -132,7 +132,3 @@ if [[ "$REPLY" =~ ^[Yy]$ ]]; then
 		sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$computername"
 	fi
 fi
-
-### Install brew formulae
-e_header "Installing Homebrew formulae"
-source ./install/brew.sh
