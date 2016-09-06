@@ -1,15 +1,16 @@
 host bb bitbucket bitbucket.org polbitbucket
-  hostname bitbucket.org
-  identityfile ~/.ssh/polbitbucket
+	hostname bitbucket.org
+	identityfile ~/.ssh/polbitbucket
 
 host gh github github.com mggithub
-  hostname github.com
-  identityfile ~/.ssh/mggithub
+	hostname github.com
+	identityfile ~/.ssh/mggithub
 
 host vouchertest
-  hostname kundecentertest.rootdom.dk
-  user voucher
+	hostname kundecentertest.rootdom.dk
+	user voucher
 
 host voucher
-  hostname kundecenter.rootdom.dk
-  user voucher
+	hostname kundecenter.rootdom.dk
+	user voucher
+

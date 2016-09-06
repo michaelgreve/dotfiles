@@ -121,6 +121,31 @@ link() {
     ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
 }
 
+mirrorfiles() {
+    # Copy `.gitconfig`.
+    # Any global git commands in `~/.bash_profile.local` will be written to
+    # `.gitconfig`. This prevents them being committed to the repository.
+    rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
+
+    # Force remove the vim directory if it's already there.
+    if [ -e "${HOME}/.vim" ]; then
+        rm -rf "${HOME}/.vim"
+    fi
+
+    # Create the necessary symbolic links between the `.dotfiles` and `HOME`
+    # directory. The `bash_profile` sources other files directly from the
+    # `.dotfiles` repository.
+    link "shell/bashrc"       ".bashrc"
+    link "shell/bash_profile" ".bash_profile"
+    link "shell/curlrc"       ".curlrc"
+    link "shell/inputrc"      ".inputrc"
+    link "git/gitignore"      ".gitignore"
+    link "vim"                ".vim"
+    link "vim/vimrc"          ".vimrc"
+
+    e_success "Dotfiles update complete!"
+}
+
 ### Set computer name
 e_header "Current computer name: $(scutil --get ComputerName)"
 read -p "Do you want to change the name for your computer? " -n 1
@@ -137,4 +162,10 @@ if [[ "$REPLY" =~ ^[Yy]$ ]]; then
 		sudo scutil --set LocalHostName "$computername"
 		sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$computername"
 	fi
+fi
+
+### Load Mac Os X default settings
+read -p "Do you want to load your Mac Os X default settings? " -n 1
+if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+    e_header "FIXME"
 fi
