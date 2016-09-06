@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-
 run_brew() {
-if type_exists 'brew'; then
-    e_header "Updating Homebrew ..."
+	if type_exists 'brew'; then
+	    e_header "Updating Homebrew ..."
         [[ $? ]] && e_success "Done"
 
         e_header "Checking status of desired Homebrew formulae..."
@@ -12,6 +11,7 @@ if type_exists 'brew'; then
         local -a desired_formulae=(
         	# GNU core utilities (remember to add to path)
     		'coreutils'
+
     		# GNU utilities
     		'binutils'
 			'diffutils'
@@ -28,41 +28,31 @@ if type_exists 'brew'; then
 			'screen'
 			'watch'
 			'wdiff --with-gettext'
-			'wget'
+			'wget --with-iri'
+			'bash'
+			'make'
+
+			# Updates to Mac Os X packages
+			'git --with-brewed-curl --with-brewed-openssl'
+			'less'
+			'openssh'
+			'python'
+			'rsync'
+			'unzip'
+			'vim --override-system-vi'
+
+			'bash-completion2'
+			'curl --with-openssl --with-libssh2'
+			'screen'
+			'composer'
+
+			'dockutil'
+			'htop'
+			'wifi-password'
+			'lastpass-cli'
 
 			'python3'
-			'bash'
-			'bash-completion2'
-			'git --with-brewed-curl --with-brewed-openssl'
-			'curl --with-openssl --with-libssh2'
 			'moreutils'
-			'composer'
-			'htop'
-			'gnu-sed --with-default-names'
-			'grep --with-default-names'
-			'findutils --with-default-names'
-			'dockutil'
-			'wget --with-iri'
-			'wifi-password'
-			'vim --with-override-system-vi'
-			'lastpass-cli'
-			'homebrew/dupes/openssh'
-			'homebrew/dupes/screen'
-
-            'coreutils' # GNU core utilities (those that come with OS X are outdated)
-            'git'
-            'ack'
-            'bash'
-            'bash-completion'
-            'ffmpeg'
-            'graphicsmagick'
-            'jpeg'
-            'macvim --override-system-vim'
-            'node'
-            'optipng'
-            'phantomjs'
-            'tree'
-            'wget'
         )
 
         for index in ${!desired_formulae[*]}
@@ -86,7 +76,7 @@ if type_exists 'brew'; then
 
         # use latest rsync rather than out-dated OS X rsync
         # install separately from the main formulae list to fix gh-19
-        brew install https://raw.github.com/Homebrew/homebrew-dupes/master/rsync.rb
+#        brew install https://raw.github.com/Homebrew/homebrew-dupes/master/rsync.rb
 
         # Remove outdated versions from the Cellar
         brew cleanup
@@ -96,65 +86,12 @@ if type_exists 'brew'; then
         printf "Aborting...\n"
         exit
     fi
-
 }
 
-else
+# ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-fi	
-}
-### Install Brews
-
-# Install command-line tools using Homebrew.
-
-# Check if Homebrew is already installed
-	e_header "Homebrew is not installed, getting latest version."
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	[[ $? ]] && e_success "Homebrew installed"
-else
-	e_header "Updating Homebrew ..."
-	brew update
-	[[ $? ]] && e_success "Done"
-fi;
-
-# Tap casks
-brew tap homebrew/versions
-brew tap homebrew/dupes
-
-# Upgrade any already-installed formulae.
-e_header "Updating any existing Homebrew formulae ..."
-brew upgrade
-[[ $? ]] && e_success "Done"
-
-apps=(
-	coreutils
-	python3
-	bash
-	bash-completion2
-	git --with-brewed-curl --with-brewed-openssl
-	curl --with-openssl --with-libssh2
-	moreutils
-	composer
-	htop
-	gnu-sed --with-default-names
-	grep --with-default-names
-	findutils --with-default-names
-	dockutil
-	wget --with-iri
-	wifi-password
-	vim --with-override-system-vi
-	lastpass-cli
-	homebrew/dupes/openssh
-	homebrew/dupes/screen
-#	homebrew/php/php56 --with-mssql --with-homebrew-curl --with-homebrew-libxml2 --with-pear
-)
-#brew install "${apps[@]}"
-unset apps
-
-ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-
-# Switch to using brew-installed bash as default shell
-if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/bash;
-fi;
+# # Switch to using brew-installed bash as default shell
+# if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
+#   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+#   chsh -s /usr/local/bin/bash;
+# fi;

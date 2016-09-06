@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Ask for administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 ### Setting directories
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_TARBALL_PATH="https://github.com/michaelgreve/dotfiles/tarball/master"
@@ -20,6 +26,7 @@ fi
 cd ${DOTFILES_DIRECTORY}
 
 ### Load utils file
+source ./lib/help
 source ./lib/utils
 source ./lib/brew
 source ./lib/cask
@@ -30,7 +37,6 @@ if [[ "$1" == "-h" || "$1" == "--help" ]]; then
     run_help
     exit
 fi
-formulae_exists 'curl --with-openssl --with-libssh2'
 
 # Test for known flags
 for opt in $@
@@ -103,11 +109,11 @@ fi
 if [[ $no_packages ]]; then
     printf "Skipped package installations.\n"
 else
-    printf "Updating packages...\n"
+    printf "Updating packages ...\n"
     # Install Homebrew formulae
-#    run_brew
+    run_brew
     # Install Node packages
-#    run_npm
+    run_npm
 fi
 
 link() {

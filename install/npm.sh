@@ -11,10 +11,11 @@ nvm alias default node
 # Globally install with npm
 
 packages=(
-  jshint
-  grunt
-  gulp
-  bower
+  'jshint'
+  'grunt'
+  'gulp'
+  'bower'
+  'yo'
 )
 
 npm install -g "${packages[@]}"
