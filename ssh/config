@@ -1,8 +1,8 @@
-host bb bitbucket polbitbucket
+host bb bitbucket bitbucket.org polbitbucket
   hostname bitbucket.org
   identityfile ~/.ssh/polbitbucket
 
-host gh github mggithub
+host gh github github.com mggithub
   hostname github.com
   identityfile ~/.ssh/mggithub
 

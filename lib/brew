@@ -53,6 +53,7 @@ run_brew() {
 
 			'python3'
 			'moreutils'
+			'node --with-openssl'
         )
 
         for index in ${!desired_formulae[*]}
