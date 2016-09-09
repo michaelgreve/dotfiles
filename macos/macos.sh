@@ -16,6 +16,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Set computer name (as done via System Preferences → Sharing)
 # This is done in bootstrap.sh
 
+# Set date and time to use 24 hour clock
+defaults write com.apple.menuextra.clock DateFormat -string 'EEE MMM d  H:mm'
+
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
 
@@ -120,7 +123,7 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
 # all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
-rm -rf ~/Library/Application\ Support/Dock/desktoppicture.db
+sudo rm -rf ~/Library/Application\ Support/Dock/desktoppicture.db
 sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
 sudo ln -s /Library/Desktop\ Pictures/Galaxy.jpg /System/Library/CoreServices/DefaultDesktop.jpg
 
