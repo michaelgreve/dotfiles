@@ -17,12 +17,14 @@ run_cask() {
 			'dash'
 			'dropbox'
 			'flux'
+            'phpstorm'
 			'pycharm-ce'
 			'google-chrome'
 			'google-chrome-canary'
 			'google-drive'
 			'sublime-text'
 			'vlc'
+            'mysqlworkbench'
     	)
 
         for index in ${!desired_formulae[*]}
