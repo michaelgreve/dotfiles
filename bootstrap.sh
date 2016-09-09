@@ -51,7 +51,7 @@ done
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
     e_warning "The XCode Command Line Tools must be installed first."
-    e_header "Installing XCode and updating existing software"
+    e_header "Installing XCode"
     xcode-select --install &> /dev/null
 
     # Wait until XCode is installed
@@ -139,9 +139,8 @@ mirrorfiles() {
     link "shell/bash_profile" ".bash_profile"
     link "shell/curlrc"       ".curlrc"
     link "shell/inputrc"      ".inputrc"
-    link "git/gitignore"      ".gitignore"
-    link "vim"                ".vim"
-    link "vim/vimrc"          ".vimrc"
+    # link "vim"                ".vim"
+    # link "vim/vimrc"          ".vimrc"
 
     e_success "Dotfiles update complete!"
 }
@@ -161,11 +160,27 @@ if [[ "$REPLY" =~ ^[Yy]$ ]]; then
 		sudo scutil --set HostName "$computername"
 		sudo scutil --set LocalHostName "$computername"
 		sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$computername"
+        e_success "Name changed"
 	fi
 fi
 
-### Load Mac Os X default settings
-read -p "Do you want to load your Mac Os X default settings? " -n 1
-if [[ "$REPLY" =~ ^[Yy]$ ]]; then
-    e_header "FIXME"
+# Ask before potentially overwriting files
+seek_confirmation "Warning: This step may overwrite your existing dotfiles."
+
+if is_confirmed; then
+    mirrorfiles
+    source ${HOME}/.bash_profile
+else
+    printf "Aborting...\n"
+    exit 1
+fi
+
+# Ask before potentially overwriting OS X defaults
+seek_confirmation "Warning: This step may modify your OS X system defaults."
+
+if is_confirmed; then
+    bash ./bin/osxdefaults
+    e_success "OS X settings updated! You may need to restart."
+else
+    printf "Skipped OS X settings update.\n"
 fi
