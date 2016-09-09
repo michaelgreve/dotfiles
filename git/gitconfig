@@ -1,0 +1,21 @@
+[core]
+	excludesfile = ~/.dotfiles/git/gitignore
+	editor = vim
+
+[user]
+	name = "Michael Greve"
+	email = "michael@grevens.dk"
+
+[diff]
+
+[color]
+	ui = auto
+
+[alias]
+	s = status
+	ci = commit --verbose
+
+[pager]
+	# Insanely beautiful diffs ==> npm install -g diff-so-fancy
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
