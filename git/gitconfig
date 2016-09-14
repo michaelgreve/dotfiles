@@ -13,23 +13,42 @@
 
 [alias]
 	s = status
+
 	ci = commit --verbose
+	cim = commit --verbose -m
+    cm = !git add -A && git commit -m
+
 	pom = push origin master
+
     co = checkout
+    cob = checkout -b
+
     ec = config --global -e
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-    cob = checkout -b
-    cm = !git add -A && git commit -m
+
     save = !git add -A && git commit -m 'SAVEPOINT'
     wip = !git add -u && git commit -m "WIP" 
+
 	undo = reset HEAD~1 --mixed
     amend = commit -a --amend
     wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
     bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
     bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
 
+    # Custom graph log (append any tree-ish)
+    graph = log --pretty=nice --date-order --graph
+    # Custom graph log for all branches
+    grapha = log --pretty=nice --date-order --graph --all
+
+
 
 [pager]
 	# Insanely beautiful diffs ==> npm install -g diff-so-fancy
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
+
+[pretty]
+    # tut: http://gitimmersion.com/lab_10.html
+    # ref: http://linux.die.net/man/1/git-log
+    # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
+    nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
