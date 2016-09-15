@@ -26,7 +26,8 @@ alias rm='rm -i -v'
 alias cp='cp -v'
 
 # Applications
-alias cask='brew cask'
+alias br='brew'
+alias cask='br cask'
 alias brs='brew search'
 alias bri='brew install'
 alias brci='brew cask install'
