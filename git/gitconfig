@@ -12,7 +12,18 @@
 	ui = auto
 
 [alias]
+    # Staging
+    a = add
+    aa = add --all
+
+    # Branch
+    br = branch
+    branch-name = rev-parse --abbrev-ref HEAD
+    branch-diff = diff master...HEAD
+    branch-files = "!git diff master...HEAD --name-status | sed '/^D/d ; s/^.\\s\\+//'"
+
 	s = status
+	ss = status -sb
 
 	ci = commit --verbose
 	cim = commit --verbose -m
@@ -22,6 +33,11 @@
 
     co = checkout
     cob = checkout -b
+
+	# Diff
+	d = diff --color-words
+	dc = diff --cached
+	df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
     ec = config --global -e
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
@@ -39,6 +55,9 @@
     graph = log --pretty=nice --date-order --graph
     # Custom graph log for all branches
     grapha = log --pretty=nice --date-order --graph --all
+
+    # Misc
+    publish = "!git push --set-upstream origin $(git branch-name)"
 
 
 

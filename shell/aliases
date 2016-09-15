@@ -25,7 +25,11 @@ alias mv='mv -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
 
+# Applications
 alias cask='brew cask'
+alias brs='brew search'
+alias bri='brew install'
+alias brci='brew cask install'
 alias g='git'
 alias dev='php bin/console --env=dev'
 alias prod='php bin/console --env=prod'
