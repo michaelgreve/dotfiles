@@ -27,6 +27,8 @@ alias cp='cp -v'
 
 alias cask='brew cask'
 alias g='git'
+alias dev='php bin/console --env=dev'
+alias prod='php bin/console --env=prod'
 
 alias hosts='sudo $EDITOR /etc/hosts'
 
