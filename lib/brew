@@ -54,6 +54,7 @@ run_brew() {
 			'python3'
 			'moreutils'
 			'node --with-openssl'
+			'git-flow-avh'
         )
 
         for index in ${!desired_formulae[*]}
