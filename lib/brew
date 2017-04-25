@@ -3,7 +3,11 @@
 run_brew() {
 	if type_exists 'brew'; then
 	    e_header "Updating Homebrew ..."
+	    brew update
         [[ $? ]] && e_success "Done"
+
+		# Tapping
+		brew tap neovim/neovim
 
         e_header "Checking status of desired Homebrew formulae..."
         local list_formulae
@@ -39,7 +43,7 @@ run_brew() {
 			'python'
 			'rsync'
 			'unzip'
-			'vim --override-system-vi'
+			'neovim'
 
 			'bash-completion2'
 			'curl --with-openssl --with-libssh2'
