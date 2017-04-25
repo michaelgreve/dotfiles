@@ -3,7 +3,7 @@
 run_help() {
 
 cat <<EOT
-OS X dotfiles
+dotfiles
 
 Usage: $(basename "$0") [options]
 
