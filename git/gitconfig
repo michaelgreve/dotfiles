@@ -17,13 +17,12 @@
     aa = add --all
 
     # Branch
-    br = branch
+    br = branch --all
     branch-name = rev-parse --abbrev-ref HEAD
     branch-diff = diff master...HEAD
     branch-files = "!git diff master...HEAD --name-status | sed '/^D/d ; s/^.\\s\\+//'"
 
-	s = status
-	ss = status -sb
+	s = status -sb
 
 	ci = commit --verbose
 	cim = commit --verbose -m
