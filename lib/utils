@@ -61,3 +61,10 @@ formula_exists() {
     e_warning "Missing formula: $1"
     return 1
 }
+
+command_exists() {
+    if [ $(type -P $1) ]; then
+        return 0
+    fi
+    return 1
+}
