@@ -43,6 +43,9 @@ alias g='git'
 ## Symfony
 alias dev='php bin/console --env=dev'
 alias prod='php bin/console --env=prod'
+## Flow
+alias flow_dev='export FLOW_CONTEXT=Development && ./flow'
+alias flow_prod='export FLOW_CONTEXT=Production && ./flow'
 
 alias hosts='sudo $EDITOR /etc/hosts'
 
