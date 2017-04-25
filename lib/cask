@@ -25,6 +25,8 @@ run_cask() {
 			'sublime-text'
 			'vlc'
             'mysqlworkbench'
+            'skype'
+            'visual-studio-code'
     	)
 
         for index in ${!desired_formulae[*]}
