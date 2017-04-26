@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# Check for source command
+if [ $(type -P source) ]; then
+    source='source'
+else
+    source='.'
+fi
+
 # Ask for administrator password upfront
 sudo -v
 
@@ -7,27 +14,36 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ### Setting directories
-DOTFILES_DIRECTORY="${HOME}/.dotfiles"
-DOTFILES_TARBALL_PATH="https://github.com/michaelgreve/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="git@github.com:michaelgreve/dotfiles.git"
+# DOTFILES_DIRECTORY="${HOME}/.dotfiles"
+# DOTFILES_TARBALL_PATH="https://github.com/michaelgreve/dotfiles/tarball/master"
+# DOTFILES_GIT_REMOTE="git@github.com:michaelgreve/dotfiles.git"
 
 # If missing, download and extract the dotfiles repository
-if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
-    printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
-    mkdir ${DOTFILES_DIRECTORY}
-    # Get the tarball
-    curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
-    # Extract to the dotfiles directory
-    tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
-    # Remove the tarball
-    rm -rf ${HOME}/dotfiles.tar.gz
-fi
+# if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
+#     printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
+#     mkdir ${DOTFILES_DIRECTORY}
+#     # Get the tarball
+#     curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
+#     # Extract to the dotfiles directory
+#     tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
+#     # Remove the tarball
+#     rm -rf ${HOME}/dotfiles.tar.gz
+# fi
 
-cd ${DOTFILES_DIRECTORY}
+# cd ${DOTFILES_DIRECTORY}
 
 ### Load utils file
-source ./default/lib/help
-source ./default/lib/utils
+$source ./default/lib/help
+$source ./default/lib/utils
+$source ./default/shell/aliases
+$source ./lib/npm
+
+if is_mac; then
+    $source ./macos/lib/brew
+    $source ./macos/lib/cask
+    $source ./macos/shell/aliases
+fi
+
 # source ./lib/brew
 # source ./lib/cask
 # source ./lib/npm

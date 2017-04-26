@@ -20,6 +20,8 @@ e_warning() {
     printf "$(tput setaf 136)! %s$(tput sgr0)\n" "$@"
 }
 
+e_success "utils loaded"
+
 # Ask for confirmation before proceeding
 seek_confirmation() {
     printf "\n"

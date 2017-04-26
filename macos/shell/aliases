@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+e_success "aliases loaded"
+
+# Applications
+alias br='brew'
+alias cask='br cask'
+alias brs='br search'
+alias bri='br install'
+alias brci='cask install'
+
+# Paths
+alias dl='cd ~/Downloads'
+alias p='cd ~/Projects'
+alias db='cd ~/Documents/Dropbox'
+
+# Lock the screen (when going AFK)
+alias afk="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+
+# Get macOS Software Updates, and update Homebrew, npm, and their installed packages
+alias update="sudo -v; brew update; brew upgrade --all; brew cleanup; npm install -g npm; npm update -g; softwareupdate -i -a;"
+
+# Empty the Trash on all mounted volumes and the main HDD.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"

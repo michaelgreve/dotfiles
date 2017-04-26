@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+e_success "brew loaded"
+
 run_brew() {
 	if type_exists 'brew'; then
 	    e_header "Updating Homebrew ..."

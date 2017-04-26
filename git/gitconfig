@@ -1,6 +1,6 @@
 [core]
 	excludesfile = ~/.dotfiles/git/gitignore
-	editor = vim
+	editor = nvim
 
 [user]
 	name = "Michael Greve"

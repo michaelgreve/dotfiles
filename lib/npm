@@ -1,15 +1,31 @@
 #!/usr/bin/env bash
 
+e_success "npm loaded"
+
 run_npm() {
     # Check for npm
     if type_exists 'npm'; then
+        e_header "Updating global npm"
+        npm install -g npm
+
         e_header "Installing Node.js packages..."
 
         # List of npm packages
-        local packages="jshint yo grunt gulp bower diff-so-fancy"
+        local -a packages=(
+            'jshint'
+            'yo'
+            'grunt'
+            'gulp'
+            'bower'
+            'diff-so-fancy'
+        )
 
         # Install packages globally and quietly
-        npm install $packages --global --quiet
+        for index in ${!packages[*]}
+        do
+            e_header "Installing ${packages[$index]}"
+            npm install ${packages[$index]} --global --quiet
+        done
 
         [[ $? ]] && e_success "Done"
     else
