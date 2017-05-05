@@ -32,7 +32,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # cd ${DOTFILES_DIRECTORY}
 
-### Load utils file
+### Load defaults
 $source ./default/lib/help
 $source ./default/lib/utils
 $source ./default/shell/aliases
@@ -44,25 +44,21 @@ if is_mac; then
     $source ./macos/shell/aliases
 fi
 
-# source ./lib/brew
-# source ./lib/cask
-# source ./lib/npm
+# Help text
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    run_help
+    exit
+fi
 
-# # Help text
-# if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-#     run_help
-#     exit
-# fi
-
-# # Test for known flags
-# for opt in $@
-# do
-#     case $opt in
-#         --no-packages) no_packages=true ;;
-#         --no-sync) no_sync=true ;;
-#         -*|--*) e_warning "Warning: invalid option $opt" ;;
-#     esac
-# done
+# Test for known flags
+for opt in $@
+do
+    case $opt in
+        --no-packages) no_packages=true ;;
+        --no-sync) no_sync=true ;;
+        -*|--*) e_warning "Warning: invalid option $opt" ;;
+    esac
+done
 
 # # Before relying on Homebrew, check that packages can be compiled
 # if ! type_exists 'gcc'; then
