@@ -28,6 +28,8 @@
 	cim = commit --verbose -m
     cm = !git add -A && git commit -m
 
+    p = pull
+    pu = push
 	pom = push origin master
 
     co = checkout
@@ -40,6 +42,10 @@
 
     ec = config --global -e
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+
+    # Flow
+    ffs = flow feature start
+    fff = flow feature finish
 
     save = !git add -A && git commit -m 'SAVEPOINT'
     wip = !git add -u && git commit -m "WIP" 
