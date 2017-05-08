@@ -1,15 +1,15 @@
 [core]
-	excludesfile = ~/.dotfiles/git/gitignore
-	editor = vim
+    excludesfile = ~/.dotfiles/git/gitignore
+    editor = vim
 
 [user]
-	name = "Michael Greve"
-	email = "michael@grevens.dk"
+    name = "Michael Greve"
+    email = "michael@grevens.dk"
 
 [diff]
 
 [color]
-	ui = auto
+    ui = auto
 
 [alias]
     # Staging
@@ -22,21 +22,21 @@
     branch-diff = diff master...HEAD
     branch-files = "!git diff master...HEAD --name-status | sed '/^D/d ; s/^.\\s\\+//'"
 
-	s = status -sb
+    s = status -sb
 
-	ci = commit --verbose
-	cim = commit --verbose -m
+    ci = commit --verbose
+    cim = commit --verbose -m
     cm = !git add -A && git commit -m
 
-	pom = push origin master
+    pom = push origin master
 
     co = checkout
     cob = checkout -b
 
-	# Diff
-	d = diff --color-words
-	dc = diff --cached
-	df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    # Diff
+    d = diff --color-words
+    dc = diff --cached
+    df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
     ec = config --global -e
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
@@ -44,7 +44,7 @@
     save = !git add -A && git commit -m 'SAVEPOINT'
     wip = !git add -u && git commit -m "WIP" 
 
-	undo = reset HEAD~1 --mixed
+    undo = reset HEAD~1 --mixed
     amend = commit -a --amend
     wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
     bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
@@ -64,9 +64,9 @@
 
 
 [pager]
-	# Insanely beautiful diffs ==> npm install -g diff-so-fancy
-	diff = diff-so-fancy | less --tabs=4 -RFX
-	show = diff-so-fancy | less --tabs=4 -RFX
+    # Insanely beautiful diffs ==> npm install -g diff-so-fancy
+    diff = diff-so-fancy | less --tabs=4 -RFX
+    show = diff-so-fancy | less --tabs=4 -RFX
 
 [pretty]
     # tut: http://gitimmersion.com/lab_10.html
