@@ -11,7 +11,7 @@ alias brci='cask install'
 
 # Paths
 alias dl='cd ~/Downloads'
-alias p='cd ~/Projects'
+alias p='cd ~/Documents/Projects'
 alias db='cd ~/Documents/Dropbox'
 
 # Lock the screen (when going AFK)
