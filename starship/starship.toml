@@ -1,0 +1,47 @@
+
+# Dotfiles 2.0 — Starship
+# Minimal, Solarized-inspired prompt
+
+add_newline = true
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$character"""
+
+[username]
+show_always = false
+style_user = 'bold #cb4b16'
+style_root = 'bold #dc322f'
+format = '[$user ]($style)'
+
+[hostname]
+ssh_only = true
+format = '[at $hostname in ](bold #b58900)'
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+format = '[$path](bold #859900)'
+
+[git_branch]
+format = '[ on ](white)[$branch](bold #6c71c4)'
+
+[git_status]
+format = '([ \[$all_status$ahead_behind\]](#dc322f))'
+staged = '+'
+modified = '!'
+untracked = '?'
+stashed = '\$'
+conflicted = '='
+ahead = '⇡'
+behind = '⇣'
+diverged = '⇕'
+
+[character]
+success_symbol = '[❯](bold #93a1a1)'
+error_symbol = '[❯](bold #dc322f)'
