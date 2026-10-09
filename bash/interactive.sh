@@ -30,6 +30,7 @@ alias c='code'
 
 # File listing (GNU/Linux)
 alias ll='ls -lah --group-directories-first --color=auto'
+alias lh='ls -lh --group-directories-first --color=auto'
 
 
 # ---------------------------------------------
